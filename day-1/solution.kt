@@ -23,7 +23,7 @@ val numberMap = mapOf(
 )
 
 fun main() {
-    println(Files.readAllLines(Path.of("../input.txt"))
+    println(Files.readAllLines(Path.of("input.txt"))
         .mapNotNull { (numberMap[it.findAnyOf(numberMap.keys)?.second] + numberMap[it.findLastAnyOf(numberMap.keys)?.second]).toInt() }
         .sum())
 }
