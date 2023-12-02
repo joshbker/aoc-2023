@@ -19,9 +19,7 @@ fun part2() {
     limits.replaceAll { _, _ -> 0 }
     println("PART 2: " + Files.readAllLines(Path.of("input.txt")).sumOf { input ->
         input.split(": ")[1].split("; ")
-            .flatMap {
-                it.split(", ").map { subset -> subset.split(" ").let { (value, colour) -> colour to value.toInt() } }
-            }
+            .flatMap { it.split(", ").map { subset -> subset.split(" ").let { (value, colour) -> colour to value.toInt() } } }
             .forEach { (colour, value) -> limits[colour]?.takeIf { value > it }?.let { limits[colour] = value } }
         limits.values.fold(1) { acc, i -> acc * i }
             .also { limits.replaceAll { _, _ -> 0 } }
